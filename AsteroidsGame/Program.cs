@@ -1,5 +1,7 @@
 ﻿// ReSharper disable UnusedParameter.Local
 
+using System;
+
 namespace AsteroidsGame;
 
 internal static class Program
