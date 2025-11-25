@@ -7,7 +7,7 @@ namespace AsteroidsGame;
 
 internal static class Program
 {
-    private static void Main(string[] args)
+    private static void Main(string[] args) //
     {
         // Create the layout
         var layout = new Layout("Root").SplitRows(
