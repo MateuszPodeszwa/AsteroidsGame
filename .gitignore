@@ -1,5 +1,45 @@
-bin/
-obj/
-/packages/
-riderModule.iml
-/_ReSharper.Caches/
+## --- Build Results & Standard .NET ---
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww]in32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## --- Visual Studio & MSTest ---
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+TestResults/
+
+## --- JetBrains Rider ---
+# Rider configuration folder
+.idea/
+.idea/*
+# Rider module files
+*.sln.iml
+
+## --- Visual Studio Code ---
+.vscode/
+
+## --- .NET Core / Project Files ---
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.nupkg
+*.snupkg
+
+## --- OS Generated Files ---
+.DS_Store
+Thumbs.db
