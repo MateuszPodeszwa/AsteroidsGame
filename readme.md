@@ -1,6 +1,6 @@
 # SharpSteroids: Console Edition
 
-![Status](https://img.shields.io/badge/Status-Archived-red) ![.NET](https://img.shields.io/badge/.NET-10.0-purple) ![License](https://img.shields.io/badge/License-MIT-blue)
+![Status](https://img.shields.io/badge/Status-InProgress-green) ![.NET](https://img.shields.io/badge/.NET-10.0-purple) ![License](https://img.shields.io/badge/License-MIT-blue)
 
 **SharpSteroids** is a high-performance recreation of the classic arcade game *Asteroids*, built entirely in C# targeting .NET 10.
 
@@ -8,7 +8,7 @@ This project was a "side quest" challenge to build a mini-game engine abstractio
 
 ## 🎯 Project Goals
 * **No External Game Libraries:** Built without Unity, MonoGame, or SDL. Just raw .NET.
-* **Engine Abstraction:** Implemented a custom `IGameObject` and `IRenderer` pipeline.
+* **Engine Abstraction:** Implemented a custom pipelines.
 * **Math:** Custom 2D vector physics for thrust, drag, and collision detection.
 * **Procedural Generation:** Endless waves of asteroids with increasing difficulty.
 
