@@ -8,12 +8,18 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="GameEngine\LevelGenerator\" />
+      <PackageReference Include="Spectre.Console" Version="0.54.0" />
+      <PackageReference Include="Spectre.Console.Cli" Version="0.53.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Spectre.Console" Version="0.54.0" />
-      <PackageReference Include="Spectre.Console.Cli" Version="0.53.0" />
+      <Folder Include="Common\Extensions\" />
+      <Folder Include="Engine\Rendering\" />
+      <Folder Include="Entities\Asteroids\" />
+      <Folder Include="Entities\Player\" />
+      <Folder Include="Entities\Shared\" />
+      <Folder Include="Systems\" />
+      <Folder Include="UI\" />
     </ItemGroup>
 
 </Project>
