@@ -87,10 +87,18 @@ internal sealed partial class InputHandler
     /// </example>
     internal KeyPress? Update(ConsoleKeyInfo keyInfo)
     {
+#if DEBUG
+        Console.WriteLine($"DEBUG: Called Update() with: {keyInfo}");
+#endif
         if (!AllowedKeys.Contains(keyInfo.Key))
             return LastKey ?? default(ConsoleKeyInfo); // Invalid key -> Return LastKey to ensure program continuity.
-            
+#if DEBUG
+        Console.WriteLine($"DEBUG: AllowedKeys.Contains Key: {AllowedKeys.Contains(keyInfo.Key)} the {keyInfo.Key}");
+#endif
         LastKey = keyInfo;
+#if DEBUG
+        Console.WriteLine($"DEBUG: Updated LastKey to keyInfo");
+#endif
         return new(keyInfo);
     }
 }
