@@ -48,7 +48,7 @@ Prerequisites: **.NET 10 SDK** (Preview or Latest Daily Build).
 *Note: For the best visual experience, use a terminal that supports ANSI escape codes (Windows Terminal, PowerShell Core, or iTerm2).*
 
 ## ⚠️ Maintenance Status
-**This project is ARCHIVED.** It was created as a specific coding challenge and is provided as-is for educational purposes. Pull requests and issues are not monitored.
+**This project is IN PROGRESS.** It was created as a specific coding challenge and is provided as-is for educational purposes. Pull requests and issues are not monitored (mainly because I cannot be bothered).
 
 ## 📄 License
 Distributed under the MIT License.
