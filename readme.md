@@ -27,18 +27,18 @@ The solution is built on a custom "Console Frame Buffer" approach:
 
 1.  **Input Loop:** Asynchronous interception of keypresses.
 2.  **Update Loop:** Calculates delta time ($dt$), updates position vectors, and handles torus-wrapping (screen wrap).
-3.  **Render Loop:** Writes a 2D char array buffer to the Console `StdOut` in a single pass to minimize flickering.
+3.  **Render Loop:** Writes a 2D char array buffer to the Console `StdOut` in a single pass to minimise flickering.
 
 ## 🚀 How to Run
 Prerequisites: **.NET 10 SDK** (Preview or Latest Daily Build).
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/yourusername/SharpSteroids-Console.git](https://github.com/yourusername/SharpSteroids-Console.git)
+    git clone repo_url
     ```
 2.  Navigate to the directory:
     ```bash
-    cd SharpSteroids-Console
+    cd AsteroidsGame
     ```
 3.  Run the application:
     ```bash
