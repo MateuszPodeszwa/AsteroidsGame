@@ -1,7 +1,6 @@
-// ReSharper disable CheckNamespace
 using System;
 
-namespace AsteroidsGame;
+namespace AsteroidsGame.Common.Structs;
 
 /// <summary>
 /// Represents an immutable point in a two-dimensional plane with integer coordinates.
@@ -52,8 +51,6 @@ public readonly record struct Point(int X, int Y)
     public static Point operator /(Point p, int divisor) => new(p.X / divisor, p.Y / divisor);
     
     #endregion
-    
-    // --- Utility Methods ---
 
     #region Utility Methods
     
