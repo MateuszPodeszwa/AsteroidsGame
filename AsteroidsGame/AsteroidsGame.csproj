@@ -17,14 +17,4 @@
       <PackageReference Include="Spectre.Console.Cli" Version="0.53.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Common\Extensions\" />
-      <Folder Include="Engine\Rendering\" />
-      <Folder Include="Entities\Asteroids\" />
-      <Folder Include="Entities\Player\" />
-      <Folder Include="Entities\Shared\" />
-      <Folder Include="Systems\" />
-      <Folder Include="UI\" />
-    </ItemGroup>
-
 </Project>
