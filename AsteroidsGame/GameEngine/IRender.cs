@@ -1,3 +1,5 @@
+using AsteroidsGame.Common.Structs;
+
 namespace AsteroidsGame.GameEngine;
 
 // Defines functions for any objects that wants to be rendered on the screen
