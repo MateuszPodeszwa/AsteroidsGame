@@ -1,39 +1,21 @@
-﻿// ReSharper disable UnusedParameter.Local
-
-using System;
-using Spectre.Console;
+﻿using System.Threading.Tasks;
+using AsteroidsGame.Core;
+using AsteroidsGame.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace AsteroidsGame;
 
 internal static class Program
 {
-    private static void Main(string[] args) //
+    private static async Task Main(string[] args) //
     {
-        // Create the layout
-        var layout = new Layout("Root").SplitRows(
-            new Layout("Top"),
-            new Layout("Bottom"));
-
-        // Update the left column
-        layout["Top"].Update(new Panel
-            (
-                Align.Left
-                (
-                    new Markup($"Score: 898" ), 
-                    VerticalAlignment.Middle
-                )).Expand()).Size(5);
+        HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
         
-        layout["Bottom"].Update(new Panel
-        (
-            Align.Center
-            (
-                new Markup("I(^)I"), 
-                VerticalAlignment.Bottom
-            )).Expand());
-
-        // Render the layout
-        AnsiConsole.Write(layout);
-        Console.Out.Flush();
-        Console.ReadLine();
+        builder.Services.AddHostedService<GameHostedService>();
+        builder.Services.AddSingleton<Game>();
+        
+        IHost app = builder.Build();
+        await app.RunAsync();
     }
 }
