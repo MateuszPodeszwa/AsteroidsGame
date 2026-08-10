@@ -1,54 +1,70 @@
 # SharpSteroids: Console Edition
 
-![Status](https://img.shields.io/badge/Status-InProgress-green) ![.NET](https://img.shields.io/badge/.NET-10.0-purple) ![License](https://img.shields.io/badge/License-MIT-blue)
+![Status](https://img.shields.io/badge/Status-Scaffold-yellow) ![.NET](https://img.shields.io/badge/.NET-10.0-purple) ![License](https://img.shields.io/badge/License-MIT-blue)
 
-**SharpSteroids** is a high-performance recreation of the classic arcade game *Asteroids*, built entirely in C# targeting .NET 10.
+**SharpSteroids** is a recreation of the classic arcade game *Asteroids*, written in C# targeting .NET 10 and rendered with ASCII/Unicode characters in the system console.
 
-This project was a "side quest" challenge to build a mini-game engine abstraction capable of vector-based physics and procedural level generation, rendered purely via ASCII/Unicode characters in the system console.
+The goal is a mini game-engine abstraction — vector physics, procedural waves, a character frame buffer — with no external game libraries.
 
-## 🎯 Project Goals
-* **No External Game Libraries:** Built without Unity, MonoGame, or SDL. Just raw .NET.
-* **Engine Abstraction:** Implemented a custom pipelines.
-* **Math:** Custom 2D vector physics for thrust, drag, and collision detection.
-* **Procedural Generation:** Endless waves of asteroids with increasing difficulty.
+## ⚠️ Current State
 
-## 🕹️ Gameplay
-The game runs directly in your terminal.
+**The codebase is a scaffold.** It was deliberately reset to a minimal starting point, and today it prints `Hello World` and exits. None of the game is implemented yet: no input loop, no physics, no rendering beyond a single line of text.
 
-* **Controls:**
-    * `↑` / `W`: Thrust
-    * `←` / `→` or `A` / `D`: Rotate Ship
-    * `Space`: Fire
-    * `Esc`: Quit
-* **Objective:** Destroy all asteroids. Large asteroids break into smaller ones. Don't get hit.
+What exists is the shape the rest will be built on:
+
+```
+AsteroidsGame/
+├── Program.cs                      # Composition root
+├── Core/Game.cs                    # The game; takes its dependencies via constructor
+└── Engine/Rendering/
+    ├── IRenderer.cs                # Output surface abstraction
+    └── ConsoleRenderer.cs          # Console implementation
+```
 
 ## 🛠️ Architecture
-The solution is built on a custom "Console Frame Buffer" approach:
 
-1.  **Input Loop:** Asynchronous interception of keypresses.
-2.  **Update Loop:** Calculates delta time ($dt$), updates position vectors, and handles torus-wrapping (screen wrap).
-3.  **Render Loop:** Writes a 2D char array buffer to the Console `StdOut` in a single pass to minimise flickering.
+Two decisions define the current structure:
+
+**Manual constructor injection.** Dependencies are declared as constructor parameters and wired by hand in `Program.cs`. There is no DI container and no generic host — no `Host.CreateApplicationBuilder`, no `IServiceCollection`, no `BackgroundService`.
+
+```csharp
+IRenderer renderer = new ConsoleRenderer();
+Game game = new(renderer);
+
+game.Run();
+```
+
+`Program.Main` is the single composition root: it is the only place that calls `new` on a dependency. Everything below it receives what it needs and never reaches out for it, which keeps `Game` testable against a fake `IRenderer` with no framework involved.
+
+**Zero dependencies.** The project references no NuGet packages at all — only the .NET base class library. Anything the game needs gets written here.
 
 ## 🚀 How to Run
-Prerequisites: **.NET 10 SDK** (Preview or Latest Daily Build).
 
-1.  Clone the repository:
-    ```bash
-    git clone repo_url
-    ```
-2.  Navigate to the directory:
-    ```bash
-    cd AsteroidsGame
-    ```
-3.  Run the application:
-    ```bash
-    dotnet run -c Release
-    ```
+Prerequisites: **.NET 10 SDK** (pinned in `global.json`).
 
-*Note: For the best visual experience, use a terminal that supports ANSI escape codes (Windows Terminal, PowerShell Core, or iTerm2).*
+```bash
+git clone repo_url
+cd AsteroidsGame
+dotnet run --project AsteroidsGame
+```
 
-## ⚠️ Maintenance Status
-**This project is IN PROGRESS.** It was created as a specific coding challenge and is provided as-is for educational purposes. Pull requests and issues are not monitored (mainly because I cannot be bothered).
+Expected output:
 
-## 📄 License
+```
+Hello World
+```
+
+## 🗺️ Planned
+
+* **Input loop** — non-blocking keypress interception, whitelisted keys.
+* **Update loop** — delta time, position/velocity vectors, torus wrapping at screen edges.
+* **Render loop** — a 2D `char` buffer written to `stdout` in one pass to minimise flicker.
+* **Gameplay** — thrust and rotation, firing, asteroids that split into smaller ones, endless waves.
+
+*For the best visual experience once rendering lands, use a terminal that supports ANSI escape codes (Windows Terminal, PowerShell Core, or iTerm2).*
+
+## 📄 Maintenance & License
+
+This project was created as a personal coding challenge and is provided as-is for educational purposes. Pull requests and issues are not monitored (mainly because I cannot be bothered). See [contributing.md](contributing.md).
+
 Distributed under the MIT License.

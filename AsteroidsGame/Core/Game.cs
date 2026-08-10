@@ -1,19 +1,11 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+using AsteroidsGame.Engine.Rendering;
 
 namespace AsteroidsGame.Core;
 
-public sealed class Game
+/// <summary>
+/// The game itself. Everything it needs arrives through the constructor.
+/// </summary>
+public sealed class Game(IRenderer renderer)
 {
-    public async Task Run(CancellationToken stoppingToken)
-    {
-        await Task.Delay(50, stoppingToken);
-        Console.WriteLine("Game is running...");
-    }
-    
-    public void Stop()
-    {
-        Console.WriteLine("Game Stopped.");
-    }
+    public void Run() => renderer.Draw("Hello World");
 }

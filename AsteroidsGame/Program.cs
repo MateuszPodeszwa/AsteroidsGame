@@ -1,21 +1,16 @@
-﻿using System.Threading.Tasks;
 using AsteroidsGame.Core;
-using AsteroidsGame.Services;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using AsteroidsGame.Engine.Rendering;
 
 namespace AsteroidsGame;
 
 internal static class Program
 {
-    private static async Task Main(string[] args) //
+    private static void Main()
     {
-        HostApplicationBuilder builder = Host.CreateApplicationBuilder(args);
-        
-        builder.Services.AddHostedService<GameHostedService>();
-        builder.Services.AddSingleton<Game>();
-        
-        IHost app = builder.Build();
-        await app.RunAsync();
+        // Composition root: dependencies are constructed here and passed down by hand.
+        IRenderer renderer = new ConsoleRenderer();
+        Game game = new(renderer);
+
+        game.Run();
     }
 }

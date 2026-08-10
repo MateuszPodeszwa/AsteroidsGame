@@ -7,14 +7,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="ConsoleMVC.Framework" Version="1.1.0" />
-      <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.6" />
-      <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.0.6" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.6" />
-      <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.6" />
-      <PackageReference Include="Spectre.Console" Version="0.54.0" />
-      <PackageReference Include="Spectre.Console.Cli" Version="0.53.0" />
-    </ItemGroup>
-
 </Project>
